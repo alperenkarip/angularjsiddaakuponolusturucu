@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html ng-app="iddaa" lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>İddaa</title>
+	<link rel="stylesheet" href="stil.css" type="text/css" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	<script type="text/javascript" src="lodash-2.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-controller="iddaaKontrol">
+	<ul>
+		<li ng-repeat="id in idd.maclar">
+		{{id}}
+		</li>
+	</ul>
+
+<a href="#" ng-click="listeSira(1)">Lige göre sırala</a>
+<a href="#" ng-click="listeSira(0)">Tarihe göre sırala</a>
+
+	<ul id="listeTest">
+<li ng-repeat="test in testx" class="macSatir">
+		<div class="ligBaslik" ng-show="siraBaslik()">{{test[0].macTarih}}</div>
+		<div class="ligBaslik" ng-hide="siraBaslik()">{{test[0].macLig}}</div>
+			<div class="maclarUst">
+				<div class="iddaaTarih">{{test[0].macTarih}}</div>
+				<div class="boslukVer"></div>
+				<div class="g40">1</div>
+				<div class="g40">X</div>
+				<div class="g40">2</div>
+				<div class="g40">2,5A</div>
+				<div class="g40">2,5Ü</div>
+				<div class="g40">KG Var</div>
+				<div class="g40">KG Yok</div>
+				<div class="g40">Tümü</div>
+			</div>
+			<div style="clear:both;"></div>
+			<div ng-repeat="maclar in test| orderBy:macSirala" class="maclar macDiv">
+				<div class="g30">{{maclar.macid}}</div>
+				<div class="g30">{{maclar.macSaat}}</div>
+				<div><img src="http://is.cdn.md/i4/New/img/iddaa/karsilastirma.png" alt="" /></div>
+				<div><img src="http://is.cdn.md/i4/New/img/iddaa/mbs3.png" alt="" /></div>
+				<div class="g200">{{maclar.macBaslik}}</div>
+				<ul>
+					<li ng-repeat="oranlar in maclar.oranlar | orderBy:'sirala':false | filter:sirala | limitTo:7">
+					<div style="display:none;"><div style="clear:both"></div><br /><br />
+					{{oranlar}} <br />
+					<div style="clear:both"></div></div>
+						<div class="oranlar"><span ng-click="asd(oranlar,maclar)" ng-class="{aktif:oranlar.aktif}" class="{{oranlar.classs}} butonYap">{{oranlar.oran}}</span></div>
+					</li>
+				</ul>
+				<div><span class="butonYap" ng-click="goster = !goster"><a ng-class="{'aktif':goster}" href="#">+64</a></span></div>
+				<div id="macOranlar" ng-show="goster">
+					<table>
+						<tr class="oranBasliklar">
+							<td rowspan="3"><img src="http://is.cdn.md/i4/New/img/iddaa/ms.png" title="Maç Sonucu"></td>
+							<td>1</td>
+							<td>X</td>
+							<td>2</td>
+							<td rowspan="3"><img src="http://is.cdn.md/i4/New/img/iddaa/cifte-sans.png" alt="" /></td>
+							<td>1-X</td>
+							<td>1-2</td>
+							<td>X-2</td>
+							<td rowspan="3"><img src="http://is.cdn.md/i4/New/img/iddaa/kg.png" alt="" /></td>
+							<td>Var</td>
+							<td>Yok</td>
+							<td rowspan="3"><img src="http://is.cdn.md/i4/New/img/iddaa/iy.png" alt="" /></td>
+							<td>1</td>
+							<td>X</td>
+							<td>2</td>
+							<td rowspan="3"><img src="http://is.cdn.md/i4/New/img/iddaa/handikap.png" alt="" /></td>
+							<td>H1</td>
+							<td>HX</td>
+							<td>H2+1</td>
+						</tr>
+						<tr>
+							<td ng-repeat="oranlar in maclar.oranlar | orderBy:satirSira1:true | limitTo:14">
+						<div class="oranlar"><span ng-click="asd(oranlar,maclar)" ng-class="{aktif:oranlar.aktif}" class="{{oranlar.classs}} butonYap">{{oranlar.oran}}</span></div>
+							</td>
+						</tr>
+					</table>
+					<table>
+						<tr class="oranBasliklar">
+							<td rowspan="3"><img src="http://is.cdn.md/i4/New/img/iddaa/alt-ust.png" title="Maç Sonucu"></td>
+							<td colspan="2" class="ustBaslik">IY 1,5 Gol</td>
+							<td colspan="2" class="ustBaslik">AÜ 1,5 Gol</td>
+							<td colspan="2" class="ustBaslik">AÜ 2,5 Gol</td>
+							<td colspan="2" class="ustBaslik">AÜ 3,5 Gol</td>
+							<td rowspan="3"><img src="http://is.cdn.md/i4/New/img/iddaa/tg.png" title="Maç Sonucu"></td>
+						</tr>
+						<tr class="oranBasliklar">
+							<td>Alt</td>
+							<td>Üst</td>	
+							<td>Alt</td>
+							<td>Üst</td>	
+							<td>Alt</td>
+							<td>Üst</td>	
+							<td>Alt</td>
+							<td>Üst</td>
+							<td>0-1</td>
+							<td>2-3</td>
+							<td>4-6</td>
+							<td>+7</td>
+						</tr>
+						<tr>
+							<td ng-repeat="oranlar in maclar.oranlar | orderBy:'satirSira2':false | limitTo:12">
+						<div><span ng-click="asd(oranlar,maclar)" ng-class="{aktif:oranlar.aktif}" class="{{oranlar.classs}} butonYap">{{oranlar.oran}}</span></div>
+							</td>
+						</tr>
+					</table>
+					<table>
+						<tr class="oranBasliklar">
+							<td rowspan="3"><img src="http://is.cdn.md/i4/New/img/iddaa/iy-ms.png" title="Maç Sonucu"></td>
+						</tr>
+						<tr class="oranBasliklar">
+							<td>1/1</td>
+							<td>1/X</td>	
+							<td>1/2</td>
+							<td>X/1</td>	
+							<td>X/X</td>
+							<td>X/2</td>	
+							<td>2/1</td>
+							<td>2/X</td>
+							<td>2/2</td>
+						</tr>
+						<tr>
+							<td ng-repeat="oranlar in maclar.oranlar | orderBy:'satirSira3':false | limitTo:9">
+						<div><span ng-click="asd(oranlar,maclar)" ng-class="{aktif:oranlar.aktif}" class="{{oranlar.classs}} butonYap">{{oranlar.oran}}</span></div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+	</li>
+</ul>	
+</body>
+</html>

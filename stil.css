@@ -1,0 +1,25 @@
+	body {font-size:12px;font-family:Arial;}
+		ul,li {list-style-type:none;margin:0;padding:0;}
+		.butonYap {display:block;width:24px;padding:3px 5px;color:#333;background:#f8f8f8;font-weight:bold;font-size:11px;text-align:center;border:1px solid #ccc;border-radius:8px;}
+	
+	#listeTest {width:802px;margin:0 auto;}
+	.maclarUst div {float:left;padding:3px;border:1px solid #333;border-right:none;}
+	.maclarUst div:last-child {border:1px solid #333;}
+	.ligBaslik {font-weight:bold;padding:5px 0px 5px 5px;border:1px solid #333;border-top:none;border-bottom:none;}
+	.maclar {overflow:auto;}
+	.maclar div {float:left;padding:5px 5px;border:1px solid #333;border-right:none;border-top:none;}
+			.maclarUst .iddaaTarih {width:119px;}
+			.maclarUst .boslukVer {width:288px;height:15px;}
+			.g40 {width:40px;text-align:center;}
+			.g30 {width:30px!important;text-align:center;}
+			.g200 {width:284px;}
+	.aktif {color:red!important}
+	.sil {color:blue}
+	span {cursor:pointer}
+	#macOranlar {}
+	#macOranlar table{}
+	#macOranlar div{border:none}
+	.oranBasliklar td {text-align:center;font-size:10px;}
+	.ustBaslik {color:#b3208d;}
+	.oranlar {padding:2px 5px 1px 5px!important;}
+	.macSatir {margin:15px 0px;}
